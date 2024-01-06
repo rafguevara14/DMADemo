@@ -14,7 +14,9 @@ add_executable(dma_demo
 			dma_demo.c
 			)
 
+pico_enable_stdio_usb(dma_demo 1)
+pico_enable_stdio_uart(dma_demo 0)
 
-target_link_libraries(dma_demo pico_stdlib)
+target_link_libraries(dma_demo pico_stdlib hardware_pwm hardware_adc)
 
 pico_add_extra_outputs(dma_demo)

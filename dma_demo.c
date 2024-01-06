@@ -7,7 +7,7 @@
 #define POT_PIN 27
 #define POT_CHANNEL 1
 
-#define PWM_MAX_COUNT 100
+#define PWM_MAX_COUNT 4095
 
 #define ADC_RESOLUTION 12
 
@@ -54,9 +54,7 @@ int main(){
 
 		uint16_t raw_data = adc_read();
 
-		uint duty_cycle = 100 * (raw_data) / ((1 << ADC_RESOLUTION)-1);
-
-		pwm_set_chan_level(slice_num, PWM_CHAN_A, duty_cycle);
+		pwm_set_chan_level(slice_num, PWM_CHAN_A, raw_data);
 
 		sleep_ms(500);
 	}
